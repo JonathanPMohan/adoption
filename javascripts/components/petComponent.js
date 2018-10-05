@@ -22,7 +22,7 @@ const characterClick = (e) => {
 
 const createEvents = () => {
     const petCards = document.getElementsByClassName('pet-card');
-    for(let i=0; i<characterCards.length; i++) {
+    for(let i=0; i<petCards.length; i++) {
         petCards[i].addEventListener('click', characterClick);
     }
 };
@@ -55,11 +55,13 @@ const sortEvents = () => {
 const petsBuilder = (petsArray) => {
     let domString = '';
     petsArray.forEach((pets) => {
-        domString += `<div class="col-3 bg bg-none character-card" id='${pets.id}'>`;
+        domString += `<div class="col-3 bg bg-none pet-card" id='${pets.name}'>`;
         domString +=    `<div class="card">`;
         domString +=        `<img class="card-img-top" img src="${pets.imageUrl}" alt="${pets.name}">`;
         domString +=        `<div class="card-body ">`;
-        domString +=            `<h4 class="card-title">${pets.name}</h4>`;
+        domString +=            `<h4 class="card-title">${pets.color}</h4>`;   
+        domString +=                `<h4 class="card-title">${pets.specialSkill}</h4>`;
+        domString +=                `<h4 class="card-title">${pets.type}</h4>`;
         domString +=        `</div>`;
         domString +=    `</div>`;
         domString += `</div>`;
@@ -69,3 +71,7 @@ const petsBuilder = (petsArray) => {
 }
 
 export{petsBuilder, setPets, getPetz, sortEvents};
+
+
+
+

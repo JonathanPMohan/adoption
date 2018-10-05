@@ -1,4 +1,4 @@
-import {setPets, petsBuilder, getPetz} from '../components/petComponents.js';
+import {setPets, petsBuilder, getPetz} from '../components/petComponent.js';
 
 function executeThisCodeAfterFileLoaded () {
     const data = JSON.parse(this.responseText);
