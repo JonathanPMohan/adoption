@@ -1,7 +1,7 @@
 // Print To Dom Function //
 
 const printToDom = (stringToPrint) => {
-    const printHere = document.getElementById('characters');
+    const printHere = document.getElementById('pets');
     printHere.innerHTML = stringToPrint;
 }
 
