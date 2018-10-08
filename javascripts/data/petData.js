@@ -1,4 +1,8 @@
+// Import Functions //
+
 import {setPets, petsBuilder, getPetz} from '../components/petComponent.js';
+
+// JSON //
 
 function executeThisCodeAfterFileLoaded () {
     const data = JSON.parse(this.responseText);
@@ -6,9 +10,13 @@ function executeThisCodeAfterFileLoaded () {
     petsBuilder(getPetz());
 }
 
+// If XHR Fails //
+
 function ececuteThisCodeIfXhrFails () {
     console.log('things be broke');
 }
+
+// XML Request //
 
 const getPets = () => {
     let myRequest = new XMLHttpRequest();
@@ -17,5 +25,7 @@ const getPets = () => {
     myRequest.open('GET', './db/pets.json');
     myRequest.send();
 };
+
+// Export Functions //
 
 export{getPets};
