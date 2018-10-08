@@ -1,5 +1,7 @@
+// Import Functions //
 import { printToDom } from "../helpers/util.js";
 
+// Set Function for Pets //
 
 let pets = [];
 
@@ -7,71 +9,48 @@ const setPets = (newArray) => {
     pets = newArray;
 }
 
+// Return Function for Pets //
+
 const getPetz = () => {
     return pets;
 };
 
+// To Use If We Add In A Pet Click Feature //
 
-
-const characterClick = (e) => {
-    const characterID = e.target.closest('.character-card').id;
-    const currentCharacter = characters.find(x => x.id === characterID);
-    detailsBuilder(currentCharacter);
+const petClick = (e) => {
+    const petID = e.target.closest('.pet-card').id;
+    const currentPet = characters.find(x => x.id === petID);
+    detailsBuilder(currentPet);
     console.log('currentCharacter', currentCharacter);
 };
+
+// Event Listener to Create Pet Click (If Used) //
 
 const createEvents = () => {
     const petCards = document.getElementsByClassName('pet-card');
     for(let i=0; i<petCards.length; i++) {
-        petCards[i].addEventListener('click', characterClick);
+        petCards[i].addEventListener('click', petClick);
     }
 };
 
-//  Sort Pets Function //
-
-const sortPets = (e) => {
-    const type = e.target.id;
-    if(type === ''){
-        petsBuilder(pets);
-    } else {
-    const filteredPets = pets.filter(x => x.type === type);
-    petsBuilder(filteredPets);
-    }
-};
-
-// Sort Events Function // 
-const sortEvents = () => {
-    const catsButton = document.getElementById('cats');
-    const dogsButton = document.getElementById('dogs');
-    const dinosButton = document.getElementById('dinos');
-    const allButton = document.getElementById('all');
-    catsButton.addEventListener('click', sortPets);
-    dogsButton.addEventListener('click', sortPets);
-    dinosButton.addEventListener('click', sortPets);
-    allButton.addEventListener('click', sortPets);
-};
-
+// Function To Print Pet String //
 
 const petsBuilder = (petsArray) => {
     let domString = '';
     petsArray.forEach((pets) => {
-        domString += `<div class="col-3 bg bg-none pet-card" id='${pets.name}'>`;
-        domString +=    `<div class="card">`;
-        domString +=        `<img class="card-img-top" img src="${pets.imageUrl}" alt="${pets.name}">`;
-        domString +=        `<div class="card-body ">`;
-        domString +=            `<h4 class="card-title">${pets.color}</h4>`;   
-        domString +=                `<h4 class="card-title">${pets.specialSkill}</h4>`;
-        domString +=                `<h4 class="card-title">${pets.type}</h4>`;
-        domString +=        `</div>`;
+        domString +=    `<div class="card border-info mb-3 pet-card" style="max-width: 18rem;">`;
+        domString +=        `<div class="card-header bg-secondary border-info">${pets.name}</div>`;
+        domString +=            `<img class="card-img-top" img src="${pets.imageUrl}" alt="${pets.name}">`;
+        domString +=               `<div class="card-body text-info">`;
+        domString +=                 `<h4 class="pet-color">${pets.color}</h4>`;
+        domString +=        `<p class="pet-skill">${pets.specialSkill}</p></div>`;
+        domString +=    `<div class="card-footer" id="${pets.type}">${pets.type}</div>`;
         domString +=    `</div>`;
-        domString += `</div>`;
     });
     printToDom(domString);
     createEvents();
 }
 
-export{petsBuilder, setPets, getPetz, sortEvents};
+// Export Functions //
 
-
-
-
+export{petsBuilder, setPets, pets, getPetz};
