@@ -5,4 +5,6 @@ const printToDom = (stringToPrint) => {
     printHere.innerHTML = stringToPrint;
 }
 
+// Export Functions //
+
 export{printToDom};
